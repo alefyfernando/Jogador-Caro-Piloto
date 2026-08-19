@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Football Career — Uma aventura interativa de futebol."
+    >
+
+    <title>Football Career</title>
+
+
+    <!-- =================================================
+         FONTES
+         ================================================= -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =================================================
+         CSS PRINCIPAL
+         ================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="animations.css"
+    >
+
+</head>
+
+
+<body data-background="stadium">
+
+
+    <!-- =================================================
+         FUNDO
+         ================================================= -->
+
+    <div
+        id="background"
+        class="background-layer"
+        data-background="stadium"
+    ></div>
+
+
+    <!-- =================================================
+         EFEITO ESCURO SOBRE O FUNDO
+         ================================================= -->
+
+    <div class="background-overlay"></div>
+
+<!-- =========================================================
+     TELA DE CRIAÇÃO DO JOGADOR
+     ========================================================= -->
+
+<section
+    id="setup-screen"
+    class="setup-screen"
+>
+
+    <div class="setup-card">
+
+        <div class="setup-header">
+
+            <span class="setup-kicker">
+                FOOTBALL CAREER
+            </span>
+
+            <h1>
+                Sua carreira começa agora.
+            </h1>
+
+            <p>
+                Crie seu jogador e prepare-se para
+                disputar a maior oportunidade da sua vida.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             NOME
+             ================================================= -->
+
+        <div class="setup-field">
+
+            <label for="setup-name">
+                NOME DO JOGADOR
+            </label>
+
+            <input
+                id="setup-name"
+                type="text"
+                maxlength="24"
+                placeholder="Digite seu nome"
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <!-- =================================================
+             POSIÇÃO
+             ================================================= -->
+
+        <div class="setup-field">
+
+            <label for="setup-position">
+                POSIÇÃO
+            </label>
+
+            <select id="setup-position">
+
+                <option value="Atacante">
+                    Atacante
+                </option>
+
+                <option value="Meia">
+                    Meia
+                </option>
+
+                <option value="Ponta">
+                    Ponta
+                </option>
+
+                <option value="Volante">
+                    Volante
+                </option>
+
+                <option value="Lateral">
+                    Lateral
+                </option>
+
+                <option value="Zagueiro">
+                    Zagueiro
+                </option>
+
+                <option value="Goleiro">
+                    Goleiro
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- =================================================
+             CLUBE
+             ================================================= -->
+
+        <div class="setup-field">
+
+            <label for="setup-club">
+                CLUBE
+            </label>
+
+            <select id="setup-club">
+
+                <option value="Royal Madrid">
+                    Royal Madrid
+                </option>
+
+                <option value="Manchester Reds">
+                    Manchester Reds
+                </option>
+
+                <option value="Paris Élite">
+                    Paris Élite
+                </option>
+
+                <option value="Bayern München">
+                    Bayern München
+                </option>
+
+                <option value="Milano FC">
+                    Milano FC
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- =================================================
+             ERRO
+             ================================================= -->
+
+        <div
+            id="setup-error"
+            class="setup-error"
+        ></div>
+
+
+        <!-- =================================================
+             BOTÃO
+             ================================================= -->
+
+        <button
+            id="start-career-button"
+            class="start-career-button"
+            type="button"
+        >
+            COMEÇAR CARREIRA
+            <span>→</span>
+        </button>
+
+
+        <div class="setup-footer">
+
+            PRIMEIRA SEMANA · SEMIFINAL DA CHAMPIONS
+            EM POUCOS DIAS
+
+        </div>
+
+    </div>
+
+</section>
+    <!-- =================================================
+         CONTAINER PRINCIPAL
+         ================================================= -->
+
+    <main class="game-container">
+
+
+        <!-- =================================================
+             TOPO
+             ================================================= -->
+
+        <header class="game-header">
+
+
+            <!-- Logo / Nome do jogo -->
+
+            <div class="game-brand">
+
+                <span class="brand-small">
+                    FOOTBALL
+                </span>
+
+                <span class="brand-large">
+                    CAREER
+                </span>
+
+            </div>
+
+
+            <!-- Capítulo -->
+
+            <div class="chapter-info">
+
+                <span class="chapter-label">
+                    CAPÍTULO
+                </span>
+
+                <span
+                    id="chapter-number"
+                    class="chapter-number"
+                >
+                    01
+                </span>
+
+            </div>
+
+
+        </header>
+
+
+        <!-- =================================================
+             ÁREA PRINCIPAL
+             ================================================= -->
+
+        <section class="game-layout">
+
+
+            <!-- =================================================
+                 PAINEL ESQUERDO — ESTATÍSTICAS
+                 ================================================= -->
+
+            <aside class="player-panel">
+
+
+                <div class="player-card">
+
+
+                    <!-- Avatar -->
+
+                    <div class="player-avatar">
+
+                        <div class="avatar-placeholder">
+                            ⚽
+                        </div>
+
+                    </div>
+
+
+                    <!-- Nome -->
+
+                    <div class="player-info">
+
+                        <span class="player-label">
+                            JOGADOR
+                        </span>
+
+                        <h2>
+                            <span id="player-name">
+                                Você
+                            </span>
+                        </h2>
+
+                        <span
+                            id="player-position"
+                            class="player-position"
+                        >
+                            Atacante
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =================================================
+                     STATS
+                     ================================================= -->
+
+                <div class="stats-container">
+
+
+                    <div class="stats-title">
+                        ATRIBUTOS
+                    </div>
+
+
+                    <!-- Confiança -->
+
+                    <div class="stat">
+
+                        <div class="stat-header">
+
+                            <span>
+                                Confiança
+                            </span>
+
+                            <span
+                                data-stat="confidence"
+                            >
+                                10
+                            </span>
+
+                        </div>
+
+                        <div class="stat-track">
+
+                            <div
+                                class="stat-bar"
+                                data-stat-bar="confidence"
+                                style="width: 10%"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Profissionalismo -->
+
+                    <div class="stat">
+
+                        <div class="stat-header">
+
+                            <span>
+                                Profissionalismo
+                            </span>
+
+                            <span
+                                data-stat="professionalism"
+                            >
+                                10
+                            </span>
+
+                        </div>
+
+                        <div class="stat-track">
+
+                            <div
+                                class="stat-bar"
+                                data-stat-bar="professionalism"
+                                style="width: 10%"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Companheiros -->
+
+                    <div class="stat">
+
+                        <div class="stat-header">
+
+                            <span>
+                                Companheiros
+                            </span>
+
+                            <span
+                                data-stat="teammates"
+                            >
+                                10
+                            </span>
+
+                        </div>
+
+                        <div class="stat-track">
+
+                            <div
+                                class="stat-bar"
+                                data-stat-bar="teammates"
+                                style="width: 10%"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Treinador -->
+
+                    <div class="stat">
+
+                        <div class="stat-header">
+
+                            <span>
+                                Treinador
+                            </span>
+
+                            <span
+                                data-stat="coach"
+                            >
+                                10
+                            </span>
+
+                        </div>
+
+                        <div class="stat-track">
+
+                            <div
+                                class="stat-bar"
+                                data-stat-bar="coach"
+                                style="width: 10%"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Torcida -->
+
+                    <div class="stat">
+
+                        <div class="stat-header">
+
+                            <span>
+                                Torcida
+                            </span>
+
+                            <span
+                                data-stat="fans"
+                            >
+                                10
+                            </span>
+
+                        </div>
+
+                        <div class="stat-track">
+
+                            <div
+                                class="stat-bar"
+                                data-stat-bar="fans"
+                                style="width: 10%"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =================================================
+                     CONTROLES
+                     ================================================= -->
+
+                <div class="game-controls">
+
+
+                    <button
+                        id="save-button"
+                        class="control-button"
+                        type="button"
+                    >
+                        💾 Salvar
+                    </button>
+
+
+                    <button
+                        id="restart-button"
+                        class="control-button"
+                        type="button"
+                    >
+                        ↻ Reiniciar
+                    </button>
+
+
+                </div>
+
+
+            </aside>
+
+
+            <!-- =================================================
+                 HISTÓRIA
+                 ================================================= -->
+
+            <section class="story-panel">
+
+
+                <!-- Indicador de cena -->
+
+                <div class="scene-meta">
+
+                    <span
+                        id="scene-title"
+                        class="scene-title"
+                    >
+                        Introdução
+                    </span>
+
+                </div>
+
+
+                <!-- =================================================
+                     CAIXA DE NARRATIVA
+                     ================================================= -->
+
+                <article class="story-card">
+
+
+                    <!-- Personagem -->
+
+                    <div class="speaker-container">
+
+                        <span class="speaker-line"></span>
+
+                        <span
+                            id="speaker"
+                            class="speaker"
+                        >
+                            Narrador
+                        </span>
+
+                    </div>
+
+
+                    <!-- Texto -->
+
+                    <div
+                        id="story-text"
+                        class="story-text"
+                    >
+                        Carregando história...
+                    </div>
+
+
+                </article>
+
+
+                <!-- =================================================
+                     CONSEQUÊNCIA
+                     ================================================= -->
+
+                <div
+    id="consequence"
+    class="consequence"
+>
+    <div
+        id="consequence-title"
+        class="consequence-title"
+    ></div>
+
+    <div
+        id="consequence-effects"
+        class="consequence-effects"
+    ></div>
+</div>
+
+
+                <!-- =================================================
+                     PERGUNTA
+                     ================================================= -->
+
+                <div class="question-container">
+
+                    <h2
+                        id="question"
+                        class="question"
+                    >
+                        Escolha sua decisão.
+                    </h2>
+
+                </div>
+
+
+                <!-- =================================================
+                     OPÇÕES
+                     ================================================= -->
+
+                <div
+                    id="answers"
+                    class="answers"
+                >
+
+                    <!--
+                        Os botões serão criados
+                        automaticamente pelo game.js.
+                    -->
+
+                </div>
+
+
+                <!-- =================================================
+                     DICA DE TECLADO
+                     ================================================= -->
+
+                <div class="keyboard-tip">
+
+                    <span>
+                        Use
+                    </span>
+
+                    <kbd>1</kbd>
+                    <kbd>2</kbd>
+                    <kbd>3</kbd>
+                    <kbd>4</kbd>
+
+                    <span>
+                        para escolher
+                    </span>
+
+                </div>
+
+
+            </section>
+
+
+        </section>
+
+
+        <!-- =================================================
+             RODAPÉ
+             ================================================= -->
+
+        <footer class="game-footer">
+
+            <span>
+                FOOTBALL CAREER
+            </span>
+
+            <span>
+                Uma decisão pode mudar tudo.
+            </span>
+
+        </footer>
+
+<!-- =========================================================
+     TELA DA PARTIDA
+     ========================================================= -->
+
+<section
+    id="match-screen"
+    class="match-screen hidden"
+>
+
+    <div class="match-container">
+
+        <!-- ================================================
+             CABEÇALHO
+             ================================================ -->
+
+        <div class="match-header">
+
+            <div class="match-competition">
+                CHAMPIONS LEAGUE · SEMIFINAL
+            </div>
+
+            <div
+                id="match-minute"
+                class="match-minute"
+            >
+                0'
+            </div>
+
+        </div>
+
+
+        <!-- ================================================
+             PLACAR
+             ================================================ -->
+
+        <div class="match-scoreboard">
+
+            <div class="match-team home">
+
+                <div class="team-badge">
+                    FC
+                </div>
+
+                <span id="match-home-name">
+                    SEU CLUBE
+                </span>
+
+            </div>
+
+
+            <div class="score-area">
+
+                <div
+                    id="match-score"
+                    class="match-score"
+                >
+                    0 - 0
+                </div>
+
+                <span class="match-status">
+                    AO VIVO
+                </span>
+
+            </div>
+
+
+            <div class="match-team away">
+
+                <span id="match-away-name">
+                    FC CHAMPIONS
+                </span>
+
+                <div class="team-badge opponent">
+                    FC
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================
+             STATUS DO JOGADOR
+             ================================================ -->
+
+        <div class="match-player-status">
+
+            <div class="match-stat">
+
+                <span>
+                    ENERGIA
+                </span>
+
+                <strong id="match-energy">
+                    100%
+                </strong>
+
+                <div class="stat-bar">
+
+                    <div
+                        id="match-energy-bar"
+                        class="stat-fill energy-fill"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="match-stat">
+
+                <span>
+                    DESEMPENHO
+                </span>
+
+                <strong id="match-performance">
+                    50
+                </strong>
+
+                <div class="stat-bar">
+
+                    <div
+                        id="match-performance-bar"
+                        class="stat-fill performance-fill"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="match-stat">
+
+                <span>
+                    CONFIANÇA
+                </span>
+
+                <strong id="match-confidence">
+                    50
+                </strong>
+
+                <div class="stat-bar">
+
+                    <div
+                        id="match-confidence-bar"
+                        class="stat-fill confidence-fill"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================
+             EVENTOS
+             ================================================ -->
+
+        <div class="match-events-panel">
+
+            <div class="match-events-header">
+
+                <span>
+                    MOMENTOS DA PARTIDA
+                </span>
+
+                <span>
+                    LIVE
+                </span>
+
+            </div>
+
+
+            <div
+                id="match-events"
+                class="match-events"
+            >
+
+                <div class="match-event empty">
+                    A partida está começando...
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================
+             CONTROLES
+             ================================================ -->
+
+        <div class="match-controls">
+
+            <button
+                id="match-action-button"
+                class="match-action-button"
+                type="button"
+            >
+                CONTINUAR
+                <span>→</span>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+    </main>
+
+
+    <!-- =================================================
+         NOTIFICAÇÃO DE SAVE
+         ================================================= -->
+
+    <div
+        id="save-notification"
+        class="save-notification"
+    >
+        Jogo salvo!
+    </div>
+
+
+    <!-- =================================================
+         JAVASCRIPT
+         ================================================= -->
+
+    <!--
+        IMPORTANTE:
+
+        storyData precisa ser carregado ANTES
+        do game.js.
+    -->
+
+<script
+    src="js/storyData.js"
+></script>
+
+<script
+    src="js/core/debug.js"
+></script>
+
+<script 
+    src="js/core/match.js"
+></script>
+
+<script
+    src="js/core/game.js"
+></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+body.menu{
+
+    --primary:#0A84FF;
+
+}
+
+body.training{
+
+    --primary:#00C853;
+
+}
+
+body.match{
+
+    --primary:#0057FF;
+
+}
+
+body.penalties{
+
+    --primary:#FFB300;
+
+}
+
+body.defeat{
+
+    --primary:#777777;
+
+}
+
+body.victory{
+
+    --primary:#FFD600;
+
+}
